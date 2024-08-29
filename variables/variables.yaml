@@ -1,5 +1,5 @@
 variables:
-  accountkey: "5a84cb53-b383-44db-bd58-c65ca3dfcb8c"
+  accountkey: "9gMKb9ET77Ly8iJ+NEpnDpQ85FYxwpPVpeNyL525q1iCe/HFvJqofyGIpDgTrgXozTN34Zr/zBRi+AStMfcliQ=="
   accountname: "tedsstorage"
   azureContainerRegistry: "teds2acr.azurecr.io"
   CONTAINER_REPO: "mile/spooky"
