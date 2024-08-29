@@ -12,4 +12,4 @@ variables:
   SCORE: 50000
   API_BASE_URL: "https://api.crowdstrike.com"
   YOUR_CLOUD: "https://falcon.crowdstrike.com"
-  AzureSubscription: "5a84cb53-b383-44db-bd58-c65ca3dfcb8c"
+  AzureSubscription: "Cloud Integrations(5a84cb53-b383-44db-bd58-c65ca3dfcb8c)"
