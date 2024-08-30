@@ -2,7 +2,7 @@ variables:
   accountkey: "9gMKb9ET77Ly8iJ+NEpnDpQ85FYxwpPVpeNyL525q1iCe/HFvJqofyGIpDgTrgXozTN34Zr/zBRi+AStMfcliQ=="
   accountname: "tedsstorage"
   azureContainerRegistry: "teds2acr.azurecr.io"
-  CONTAINER_REPO: "mile/spooky"
+  CONTAINER_REPO: "spooky"
   CONTAINER_TAG: "latest"
   containername: "tedspolicytestcontainer"
   dockerRegistryServiceConnection: "mile"
