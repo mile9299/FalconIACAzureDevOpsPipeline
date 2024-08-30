@@ -11,5 +11,5 @@ variables:
   FALCON_CLOUD_REGION: "us-1"
   SCORE: 50000
   API_BASE_URL: "https://api.crowdstrike.com"
-  YOUR_CLOUD: "https://falcon.crowdstrike.com"
+  YOUR_CLOUD: "58FC9E1DDE9946D4976B66844B4B15F6-D3"
   AzureSubscription: "Cloud Integrations(5a84cb53-b383-44db-bd58-c65ca3dfcb8c)"
