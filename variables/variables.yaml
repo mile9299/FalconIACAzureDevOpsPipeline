@@ -7,7 +7,7 @@ variables:
   containername: "tedspolicytestcontainer"
   dockerRegistryServiceConnection: "mile"
   FALCON_CLIENT_ID: "e568db1fbbb04c5cb304816a3620892d"
-  FALCON_CLIENT_SECRET: "7IO5uDQ04JbkoeplL1wMCXsnFGS3U6cf2RZm9a8H"
+  FALCON_CLIENT_SECRET: "mT8h13r0DaERi69QBq2Htd7kAlNC4LMIYyz5Fvob"
   FALCON_CLOUD_REGION: "us-1"
   SCORE: 50000
   API_BASE_URL: "https://api.crowdstrike.com/"
