@@ -1,0 +1,102 @@
+{
+   "containerDefinitions": [
+      {
+         "cpu": 0,
+         "dependsOn": [
+            {
+               "condition": "COMPLETE",
+               "containerName": "crowdstrike-falcon-init-container"
+            }
+         ],
+         "entryPoint": [
+            "/tmp/CrowdStrike/rootfs/lib64/ld-linux-x86-64.so.2",
+            "--library-path",
+            "/tmp/CrowdStrike/rootfs/lib64",
+            "/tmp/CrowdStrike/rootfs/bin/bash",
+            "/tmp/CrowdStrike/rootfs/entrypoint-ecs.sh",
+            "/entrypoint.sh"
+         ],
+         "environment": [
+            {
+               "name": "FALCONCTL_OPTS",
+               "value": "--tags=DVN-ECS-Fargate --cid=<ENTER_YOUR_FALCON_CID>”
+            }
+         ],
+         "environmentFiles": [],
+         "essential": true,
+         "image": "quay.io/slukasik/vulnapp",
+         "linuxParameters": {
+            "capabilities": {
+               "add": [
+                  "SYS_PTRACE"
+               ]
+            }
+         },
+         "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+               "awslogs-create-group": "true",
+               "awslogs-group": "/ecs/",
+               "awslogs-region": "us-east-2",
+               "awslogs-stream-prefix": "ecs"
+            },
+            "secretOptions": []
+         },
+         "mountPoints": [
+            {
+               "containerPath": "/tmp/CrowdStrike",
+               "readOnly": true,
+               "sourceVolume": "crowdstrike-falcon-volume"
+            }
+         ],
+         "name": "dvn-vulapp",
+         "portMappings": [
+            {
+               "appProtocol": "http",
+               "containerPort": 8080,
+               "hostPort": 8080,
+               "name": "dvn-vulapp-8080-tcp",
+               "protocol": "tcp"
+            }
+         ],
+         "ulimits": [],
+         "volumesFrom": []
+      },
+      {
+         "entryPoint": [
+            "/bin/bash",
+            "-c",
+            "chmod u+rwx /tmp/CrowdStrike && mkdir /tmp/CrowdStrike/rootfs && cp -r /bin /etc /lib64 /usr /entrypoint-ecs.sh /tmp/CrowdStrike/rootfs && chmod -R a=rX /tmp/CrowdStrike"
+         ],
+         "essential": false,
+         "image": "5xxxxx13836.dkr.ecr.us-east-1.amazonaws.com/dvn-repo/falcon-container:latest",
+         "mountPoints": [
+            {
+               "containerPath": "/tmp/CrowdStrike",
+               "readOnly": false,
+               "sourceVolume": "crowdstrike-falcon-volume"
+            }
+         ],
+         "name": "crowdstrike-falcon-init-container",
+         "user": "0:0"
+      }
+   ],
+   "cpu": "512",
+   "executionRoleArn": "arn:aws:iam::5xxxxx13836:role/ECSTaskExecutionRole",
+   "family": "dvn-ecs-fargate-taskdefinition",
+   "memory": "3072",
+   "networkMode": "awsvpc",
+   "requiresCompatibilities": [
+      "FARGATE"
+   ],
+   "runtimePlatform": {
+      "cpuArchitecture": "X86_64",
+      "operatingSystemFamily": "LINUX"
+   },
+   "taskRoleArn": "arn:aws:iam::5xxxxx13836:role/ECSTaskExecutionRole",
+   "volumes": [
+      {
+         "name": "crowdstrike-falcon-volume"
+      }
+   ]
+}
